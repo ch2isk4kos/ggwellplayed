@@ -35,7 +35,12 @@
 
 ## GAME INDEX
 
-
+* Title
+* Description
+* Platform
+* Genre
+* ESRB Rating
+* Image URL
 
 
 #### *Game Stats Hack*
