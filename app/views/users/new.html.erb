@@ -1,3 +1,4 @@
+<h1>Sign up</h1>
 <% if @user.errors.full_messages.any? %>
     <% @user.errors.full_messages.each do |message| %>
         <%= message %> <br>
@@ -6,38 +7,21 @@
 
 <%= form_for @user do |f| %>
 
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-    <br>
+    <%= f.label :first_name %> <br>
+    <%= f.text_field :first_name %> <br>
 
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+    <%= f.label :last_name %> <br>
+    <%= f.text_field :last_name %> <br>
 
-    <br>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= f.label :username %> <br>
+    <%= f.text_field :username %> <br>
 
-    <br>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.label :password %> <br>
+    <%= f.password_field :password %> <br>
 
-    <br>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.label :password_confirmation, "Confirmation" %> <br>
+    <%= f.password_field :password_confirmation %> <br>
 
-    <br>
-    <%= f.label :gamer_tag %>
-    <%= f.text_field :gamer_tag %>
-
-    <br>
-    <%= f.label :avatar_url %>
-    <%= f.text_field :avatar_url %>
-
-    <br>
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-
-    <br>
-    <%= f.submit %>
+    <%= f.submit "Create Account"%>
 
 <% end %>

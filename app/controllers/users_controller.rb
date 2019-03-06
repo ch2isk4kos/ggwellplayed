@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     ###### SIGNUP ######
     def new
         @user = User.new
+        # debugger
     end
 
     def create
