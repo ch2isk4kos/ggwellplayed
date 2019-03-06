@@ -1,6 +1,9 @@
-<h1>Show Me Your Page</h1>
-<img src="<%= @user.avatar_url %>" alt="">
-<h2>Game Tag: <%= @user.gamer_tag %></h2>
-<h2>Location: <%= @user.location %></h2>
+<h1><%= @user.username.upcase %></h1>
+
+<img src="<%= @user.avatar_url %>" alt=""> <br>
+
+<strong>Name: </strong><%= @user.full_name %> <br>
+<strong>Gamer Tag: </strong><%= @user.gamer_tag %> <br>
+<strong>Location: </strong><%= @user.location %>
 
 <%= button_to "Edit Account", edit_user_path(@user), method: 'get' %>
