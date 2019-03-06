@@ -6,6 +6,9 @@
     <%= f.label :last_name %>
     <%= f.text_field :last_name %>
     <br>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <br>
     <%= f.label :password %>
     <%= f.password_field :password %>
     <br>
@@ -22,4 +25,5 @@
 
 <% end %>
 
+<%= button_to 'Back', user_path(@user), method: "get" %>
 <%= button_to 'Delete Account', user_path(@user), method: "delete" %>
