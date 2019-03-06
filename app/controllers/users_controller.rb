@@ -4,7 +4,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
-    ###### SIGNUP ######
+    #---- SIGNUP ----#
     def new
         @user = User.new
     end
@@ -13,11 +13,10 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
 
         if @user.valid?
-          flash[:success] = "Welcome to the Sample App!"
             redirect_to user_path(@user)
         else
             flash[:errors] = @user.errors.full_messages
-            render :new
+            redirect_to new_user_path
         end
     end
 
@@ -27,8 +26,13 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        @user.update(user_params)
-        redirect_to user_path(@user)
+
+        if @user.update(user_params)
+          redirect_to user_path(@user)
+        else
+          flash[:errors] = @user.errors.full_messages
+          redirect_to edit_user_path(@user)
+        end
     end
 
     def destroy
