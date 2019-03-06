@@ -7,16 +7,16 @@ class UsersController < ApplicationController
     ###### SIGNUP ######
     def new
         @user = User.new
-        # debugger
     end
 
     def create
         @user = User.create(user_params)
-        # byebug
+
         if @user.valid?
+          flash[:success] = "Welcome to the Sample App!"
             redirect_to user_path(@user)
         else
-            # flash[:message] = @user.errors.full_messages
+            flash[:errors] = @user.errors.full_messages
             render :new
         end
     end

@@ -1,8 +1,13 @@
 <h1>Sign up</h1>
-<% if @user.errors.full_messages.any? %>
-    <% @user.errors.full_messages.each do |message| %>
-        <%= message %> <br>
+
+<% if @user.errors.any? %>
+  <ul>
+    <% flash.each do |error, messages| %>
+      <% messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     <% end %>
+  </ul>
 <% end %>
 
 <%= form_for @user do |f| %>
