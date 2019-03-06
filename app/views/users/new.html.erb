@@ -1,0 +1,23 @@
+<%= form_for @user do |f| %>
+
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    <br>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    <br>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br>
+    <%= f.label :gamer_tag %>
+    <%= f.text_field :gamer_tag %>
+    <br>
+    <%= f.label :avatar_url %>
+    <%= f.text_field :avatar_url %>
+    <br>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+    <br>
+    <%= f.submit %>
+
+<% end %>
