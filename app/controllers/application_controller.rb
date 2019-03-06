@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   def setup
     @errors = flash[:errors]
     @message = flash[:message]
+    @logged_in = session[:user_id] != nil
   end
-  
+
 end
