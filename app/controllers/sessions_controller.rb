@@ -1,17 +1,22 @@
 class SessionsController < ApplicationController
 
-  ###### LOGIN ######
+  #---- LOGIN ----#
   def new
   end
 
   def create
-    # byebug
-    @user = User.find_by(params[:session][:username])
-    # byebug
-    redirect_to user_path(@user)
+    @user = User.find_by(username: params[:session][:username])
+
+    if @user && @user.authenticate(params[:session][:password])
+      session[:user_id] = @user.id
+      redirect_to user_path(session[:user_id])
+    else
+      flash[:errors] = ["The username or password you entered was not correct."]
+      redirect_to login_path
+    end
   end
 
-  ###### LOGOUT ######
+  #---- LOGOUT ----#
   def destroy
   end
 end
