@@ -10,6 +10,7 @@
   </head>
 
   <body>
+
     <!-- ERROR MESSAGES -->
     <% if @errors && @errors.any? %>
       <ul>
@@ -19,6 +20,7 @@
       </ul>
     <% end %>
     <!-- ERROR MESSAGES END -->
+    
     <!-- Navbar -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<a href="/" class="navbar-brand">gg well played</a>
@@ -32,9 +34,15 @@
 					<!-- <li class="nav-item">
 						<a href="/users" class="nav-link">Home</a>
 					</li> -->
-					<li class="nav-item">
-						<a href="/login" class="nav-link">Login</a>
-					</li>
+          <% unless @logged_in %>
+            <li class="nav-item">
+              <a href="/login" class="nav-link">Login</a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a href="/logout" class="nav-link">Logout</a>
+            </li>
+          <% end %>
 					<li class="nav-item">
 						<a href="/users/new" class="nav-link">Signup</a>
 					</li>
