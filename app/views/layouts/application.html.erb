@@ -20,7 +20,7 @@
       </ul>
     <% end %>
     <!-- ERROR MESSAGES END -->
-    
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<a href="/" class="navbar-brand">gg well played</a>
@@ -38,14 +38,14 @@
             <li class="nav-item">
               <a href="/login" class="nav-link">Login</a>
             </li>
+            <li class="nav-item">
+  						<a href="/users/new" class="nav-link">Signup</a>
+  					</li>
           <% else %>
             <li class="nav-item">
-              <a href="/logout" class="nav-link">Logout</a>
+              <a data-method="DELETE" href="/logout" class="nav-link">Logout</a>
             </li>
           <% end %>
-					<li class="nav-item">
-						<a href="/users/new" class="nav-link">Signup</a>
-					</li>
 					<!-- <li class="nav-item">
 						<a href="/users/new" class="nav-link">Signup</a>
 					</li> -->
