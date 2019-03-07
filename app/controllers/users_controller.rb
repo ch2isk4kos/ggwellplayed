@@ -38,6 +38,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
 
         if @user.update(user_params)
+          flash[:messages] = ["Account successfully updated"]
           redirect_to user_path(@user)
         else
           flash[:errors] = @user.errors.full_messages
@@ -46,11 +47,15 @@ class UsersController < ApplicationController
     end
     #------------------------#
 
-    #---- DELETE PROFILE ----#
+    #---- DELETE ACCOUNT ----#
     def destroy
         @user = User.find(params[:id])
-
-        @user.destroy
+        if @logged_in && @user.id == @logged_in_user.id
+          @user.destroy
+          session[:user_id] = nil
+        else
+          flash[:errors] = ["403 - Foribidden: Access is denied."]
+        end
         redirect_to root_path
     end
     #------------------------#

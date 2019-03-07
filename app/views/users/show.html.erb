@@ -1,11 +1,11 @@
 <h1><%= @user.username.upcase %></h1>
 
-<img src="<%= @user.avatar_url %>" alt=""> <br>
+<img src="<%= @user.avatar_url %>" alt="user avatar"> <br>
 
 <strong>Name: </strong><%= @user.full_name %> <br>
 <strong>Gamer Tag: </strong><%= @user.gamer_tag %> <br>
 <strong>Location: </strong><%= @user.location %>
 
-<% if @logged_in && @user.id == session[:user_id] %>
+<% if @logged_in && @user.id == @logged_in_user.id %>
   <%= button_to "Edit Account", edit_user_path(@user), method: 'get' %>
 <% end %>

@@ -11,16 +11,6 @@
 
   <body>
 
-    <!-- ERROR MESSAGES -->
-    <% if @errors && @errors.any? %>
-      <ul>
-        <% @errors.each do |error_msg| %>
-          <li><%= error_msg %></li>
-        <% end %>
-      </ul>
-    <% end %>
-    <!-- ERROR MESSAGES END -->
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<a href="/" class="navbar-brand">gg well played</a>
@@ -52,6 +42,26 @@
 				</ul>
 			</div>
 		</nav>
+
+    <!-- ERROR MESSAGES -->
+    <% if @errors && @errors.any? %>
+      <ul>
+        <% @errors.each do |error_msg| %>
+          <li><%= error_msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <!-- ERROR MESSAGES END -->
+
+    <!-- NOTIFICATION MESSAGES -->
+    <% if @messages && @messages.any? %>
+      <ul>
+        <% @messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <!-- NOTIFICATION MESSAGES END -->
 
     <%= yield %>
   </body>

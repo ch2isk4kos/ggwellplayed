@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # Instance variables "@" are used to pass data to views
   def setup
     @errors = flash[:errors]
-    @message = flash[:message]
+    @messages = flash[:messages]
     @logged_in = !!session[:user_id]
 
     if @logged_in
