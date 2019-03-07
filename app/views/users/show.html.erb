@@ -6,4 +6,6 @@
 <strong>Gamer Tag: </strong><%= @user.gamer_tag %> <br>
 <strong>Location: </strong><%= @user.location %>
 
-<%= button_to "Edit Account", edit_user_path(@user), method: 'get' %>
+<% if @logged_in && @user.id == session[:user_id] %>
+  <%= button_to "Edit Account", edit_user_path(@user), method: 'get' %>
+<% end %>

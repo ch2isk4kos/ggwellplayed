@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
 
+    #----- VIEW PROFILE -----#
     def show
         @user = User.find(params[:id])
-        # @user = User.find(session[:user_id])
     end
+    #------------------------#
 
-    #---- SIGNUP ----#
+    #-------- SIGNUP --------#
     def new
         @user = User.new
     end
@@ -14,15 +15,23 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
 
         if @user.valid?
+            login_user(@user)
             redirect_to user_path(@user)
         else
             flash[:errors] = @user.errors.full_messages
             redirect_to new_user_path
         end
     end
+    #------------------------#
 
+    #---- UPDATE PROFILE ----#
     def edit
-        @user = User.find(params[:id])
+        if @logged_in && params[:id].to_i == @logged_in_user.id
+          @user = User.find(params[:id])
+        else
+          flash[:errors] = ["403 - Foribidden: Access is denied."]
+          redirect_to root_path
+        end
     end
 
     def update
@@ -35,12 +44,16 @@ class UsersController < ApplicationController
           redirect_to edit_user_path(@user)
         end
     end
+    #------------------------#
 
+    #---- DELETE PROFILE ----#
     def destroy
         @user = User.find(params[:id])
+
         @user.destroy
         redirect_to root_path
     end
+    #------------------------#
 
     private
 
